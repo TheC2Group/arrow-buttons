@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>arrow-buttons</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+
+            .Hidden {
+                display: none;
+            }
+
+            .previous:before {
+                content: "<";
+            }
+
+            .next:before {
+                content: ">";
+            }
+
+            .previous[data-status="enabled"],
+            .next[data-status="enabled"] {
+                color: #000;
+            }
+
+            .previous[data-status="disabled"],
+            .next[data-status="disabled"] {
+                color: #999;
+                cursor: default;
+            }
+
+            .Example {
+                font-size: 30px;
+            }
+            .Example:before {
+                content: attr(data-index);
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Finite</h3>
+        <div class="Example Example1" data-index="0"></div>
+        <h3>Infinite</h3>
+        <div class="Example Example2" data-index="0"></div>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/event-handler.js"></script>
+        <script src="../arrow-buttons.js"></script>
+
+        <script>
+            // mixin events
+            eventHandler(ArrowButtons);
+
+            var $example1 = $('.Example1');
+            var arrows1 = new ArrowButtons($example1, 5);
+
+            arrows1.on('previous', function (index) {
+                $example1.attr('data-index', index);
+            });
+            arrows1.on('next', function (index) {
+                $example1.attr('data-index', index);
+            });
+
+            var $example2 = $('.Example2');
+            var arrows2 = new ArrowButtons($example2, 5, {
+                style: 'infinite'
+            });
+
+            arrows2.on('previous', function (index) {
+                $example2.attr('data-index', index);
+            });
+            arrows2.on('next', function (index) {
+                $example2.attr('data-index', index);
+            });
+        </script>
+    </body>
+</html>
