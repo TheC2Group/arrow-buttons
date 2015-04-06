@@ -1,5 +1,5 @@
 /*  arrow-buttons
- *  version: 0.0.0
+ *  version: 1.0.0
  *  https://stash.c2mpg.com:8443/projects/C2/repos/arrow-buttons
  *  @preserve
  */
@@ -50,7 +50,7 @@ var ArrowButtons = (function ($) {
     }());
 
     // context should be an instance of Arrow
-    var update = function () {
+    var updateButtons = function () {
         if (this.opts.style !== 'finite') return;
         if (this.index < 1) {
             setPrevious.call(this, this.opts.disabled);
@@ -65,10 +65,14 @@ var ArrowButtons = (function ($) {
         }
     };
 
+    var informListeners = function (index, direction) {
+        this._listeners.forEach(function (cb) {
+            cb(index, direction);
+        });
+    };
+
     // context should be an instance of Arrow
     var previousIndex = function () {
-        if (!this.emit) return;
-
         var i = this.index - 1;
         if (i < 0) {
             if (this.opts.style === 'finite') return;
@@ -76,14 +80,12 @@ var ArrowButtons = (function ($) {
         }
 
         this.index = i;
-        update.call(this);
-        this.emit('previous', i);
+        updateButtons.call(this);
+        informListeners.call(this, i, 'previous');
     };
 
     // context should be an instance of Arrow
     var nextIndex = function () {
-        if (!this.emit) return;
-
         var i = this.index + 1;
         if (i > this.max) {
             if (this.opts.style === 'finite') return;
@@ -91,8 +93,8 @@ var ArrowButtons = (function ($) {
         }
 
         this.index = i;
-        update.call(this);
-        this.emit('next', i);
+        updateButtons.call(this);
+        informListeners.call(this, i, 'next');
     };
 
     // context should be an instance of Arrow
@@ -112,6 +114,7 @@ var ArrowButtons = (function ($) {
         this.$parent = $(parent);
         this.max = max;
         this.opts = $.extend({}, defaults, options);
+        this._listeners = [];
 
         this.$previous = $(this.opts.previousHTML);
         this.$next = $(this.opts.nextHTML);
@@ -120,21 +123,26 @@ var ArrowButtons = (function ($) {
 
         this.index = this.opts.initial;
 
-        update.call(this);
+        updateButtons.call(this);
 
         bindEvents.call(this);
     };
 
-    Arrows.setMax = function (max) {
+    Arrows.prototype.setMax = function (max) {
         if (this.max === max) return;
         this.max = max;
         update.call(this);
     };
 
-    Arrows.setIndex = function (index) {
+    Arrows.prototype.setIndex = function (index) {
         if (this.index === index) return;
         this.index = index;
         update.call(this);
+    };
+
+    Arrows.prototype.onUpdate = function (cb) {
+        if (typeof cb !== 'function') return;
+        this._listeners.push(cb);
     };
 
     return Arrows;

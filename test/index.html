@@ -47,20 +47,14 @@
         <div class="Example Example2" data-index="0"></div>
 
         <script src="js/jquery.js"></script>
-        <script src="js/event-handler.js"></script>
         <script src="../arrow-buttons.js"></script>
 
         <script>
-            // mixin events
-            eventHandler(ArrowButtons);
 
             var $example1 = $('.Example1');
             var arrows1 = new ArrowButtons($example1, 5);
 
-            arrows1.on('previous', function (index) {
-                $example1.attr('data-index', index);
-            });
-            arrows1.on('next', function (index) {
+            arrows1.onUpdate(function (index) {
                 $example1.attr('data-index', index);
             });
 
@@ -69,10 +63,7 @@
                 style: 'infinite'
             });
 
-            arrows2.on('previous', function (index) {
-                $example2.attr('data-index', index);
-            });
-            arrows2.on('next', function (index) {
+            arrows2.onUpdate(function (index) {
                 $example2.attr('data-index', index);
             });
         </script>
