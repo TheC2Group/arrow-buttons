@@ -7,6 +7,7 @@ ES5 polyfills needed for `Array.forEach`.
 
 Dependencies: jQuery
 
+
 Basic example
 -------------
 
@@ -18,7 +19,7 @@ var max = 5;
 var options = {
     previousHTML: '<a href="#" class="previous"><span class="Hidden">Go to previous item</span></a>',
     nextHTML: '<a href="#" class="next"><span class="Hidden">Go to next item</span></a>',
-    style: 'finite',
+    style: 'finite', // 'finite' || 'infinite'
     attribute: 'data-status',
     enabled: 'enabled',
     disabled: 'disabled',
@@ -33,6 +34,7 @@ arrows.onUpdate(function (index, direction) {
 });
 ```js
 
+
 ArrowButtons
 ------------
 Constructor  
@@ -41,13 +43,16 @@ Constructor
 @param {Object} - object to change any of the default options  
 @return {Object} - instance of ArrowButtons  
 
+
 .setIndex
 ---------
 @param {Number}  
 
+
 .setMax
 -------
 @param {Number}  
+
 
 .onUpdate
 ---------
