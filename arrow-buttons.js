@@ -131,13 +131,13 @@ var ArrowButtons = (function ($) {
     Arrows.prototype.setMax = function (max) {
         if (this.max === max) return;
         this.max = max;
-        update.call(this);
+        updateButtons.call(this);
     };
 
     Arrows.prototype.setIndex = function (index) {
         if (this.index === index) return;
         this.index = index;
-        update.call(this);
+        updateButtons.call(this);
     };
 
     Arrows.prototype.onUpdate = function (cb) {
