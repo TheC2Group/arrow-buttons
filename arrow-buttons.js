@@ -1,5 +1,5 @@
 /*  arrow-buttons
- *  version: 1.0.0
+ *  version: 1.0.1
  *  https://stash.c2mpg.com:8443/projects/C2/repos/arrow-buttons
  *  @preserve
  */
@@ -65,7 +65,7 @@ var ArrowButtons = (function ($) {
         }
     };
 
-    var informListeners = function (index, direction) {
+    var emit = function (index, direction) {
         this._listeners.forEach(function (cb) {
             cb(index, direction);
         });
@@ -81,7 +81,7 @@ var ArrowButtons = (function ($) {
 
         this.index = i;
         updateButtons.call(this);
-        informListeners.call(this, i, 'previous');
+        emit.call(this, i, 'previous');
     };
 
     // context should be an instance of Arrow
@@ -94,7 +94,7 @@ var ArrowButtons = (function ($) {
 
         this.index = i;
         updateButtons.call(this);
-        informListeners.call(this, i, 'next');
+        emit.call(this, i, 'next');
     };
 
     // context should be an instance of Arrow
