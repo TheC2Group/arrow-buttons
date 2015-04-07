@@ -1,5 +1,5 @@
 /*  arrow-buttons
- *  version: 1.0.1
+ *  version: 1.1.0
  *  https://stash.c2mpg.com:8443/projects/C2/repos/arrow-buttons
  *  @preserve
  */
@@ -132,17 +132,20 @@ var ArrowButtons = (function ($) {
         if (this.max === max) return;
         this.max = max;
         updateButtons.call(this);
+        return this;
     };
 
     Arrows.prototype.setIndex = function (index) {
         if (this.index === index) return;
         this.index = index;
         updateButtons.call(this);
+        return this;
     };
 
     Arrows.prototype.onUpdate = function (cb) {
         if (typeof cb !== 'function') return;
         this._listeners.push(cb);
+        return this;
     };
 
     return Arrows;

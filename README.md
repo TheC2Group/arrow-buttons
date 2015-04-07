@@ -38,7 +38,7 @@ arrows.onUpdate(function (index, direction) {
 ArrowButtons
 ------------
 Constructor  
-@param {jQuery selector} - element that the arrow buttons are appended to  
+@param {jQuery} - element that the arrow buttons are appended to  
 @param {Number} - max value that the index can reach, the min value is always 0  
 @param {Object} - object to change any of the default options  
 @return {Object} - instance of ArrowButtons  
