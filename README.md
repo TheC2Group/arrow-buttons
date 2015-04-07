@@ -47,13 +47,16 @@ Constructor
 .setIndex
 ---------
 @param {Number}  
+@return {Object} - instance of ArrowButtons  
 
 
 .setMax
 -------
 @param {Number}  
+@return {Object} - instance of ArrowButtons  
 
 
 .onUpdate
 ---------
-@param {Function}
+@param {Function}  
+@return {Object} - instance of ArrowButtons  
