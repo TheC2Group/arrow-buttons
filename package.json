@@ -1,0 +1,19 @@
+{
+  "name": "arrow-buttons",
+  "version": "1.2.0",
+  "description": "This module builds \"next\" and \"previous\" buttons and emits an update whenever the index changes.",
+  "main": "arrow-buttons.js",
+  "scripts": {
+    "standalone": "browserify arrow-buttons.js --outfile standalone/arrow-buttons.js --standalone ArrowButtons --exclude jquery",
+    "dist": "uglifyjs standalone/arrow-buttons.js --output standalone/arrow-buttons.min.js --comments"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@stash.c2mpg.com:7999/c2/arrow-buttons.git"
+  },
+  "keywords": [
+    "arrow buttons"
+  ],
+  "author": "The C2 Group",
+  "license": "MIT"
+}

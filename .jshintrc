@@ -1,6 +1,7 @@
 {
     "browser": true,
-    "jquery": true,
+    "node": true,
+    "jquery": false,
     "bitwise": true,
     "camelcase": true,
     "curly": false,
@@ -15,5 +16,6 @@
     "undef": true,
     "unused": true,
     "strict": false,
-    "trailing": true
+    "trailing": true,
+    "predef": ["jQuery"]
 }

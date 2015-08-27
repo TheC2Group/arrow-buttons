@@ -5,7 +5,26 @@ This module builds "next" and "previous" buttons and emits an update whenever th
 
 ES5 polyfills needed for `Array.forEach`.
 
-Dependencies: jQuery
+
+To get started
+--------------
+
+### CommonJS
+
+```
+$ get clone ssh://git@stash.c2mpg.com:7999/c2/arrow-buttons.git
+```
+
+```js
+var ArrowButtons = require('./arrow-buttons');
+```
+
+### Browser Global
+
+```html
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="standalone/arrow-buttons.js"></script>
+```
 
 
 Basic example
@@ -60,3 +79,9 @@ Constructor
 ---------
 @param {Function}  
 @return {Object} - instance of ArrowButtons  
+
+
+License
+-------
+
+MIT © [The C2 Group](https://c2experience.com)
