@@ -1,7 +1,7 @@
 arrow-buttons
 =============
 
-This module builds "next" and "previous" buttons and emits an update whenever the index changes. If the index changes outside of this module, it is important to notify this module of the new index.
+> This module builds "next" and "previous" buttons and emits an update whenever the index changes. If the index changes outside of this module, it is important to notify this module of the new index.
 
 ES5 polyfills needed for `Array.forEach`.
 
