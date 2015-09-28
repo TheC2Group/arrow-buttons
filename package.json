@@ -1,6 +1,6 @@
 {
   "name": "c2-arrow-buttons",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "This module builds \"next\" and \"previous\" buttons and emits an update whenever the index changes.",
   "main": "arrow-buttons.js",
   "scripts": {
