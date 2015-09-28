@@ -51,7 +51,7 @@ arrows.onUpdate(function (index, direction) {
     console.log(index);
     console.log(direction);
 });
-```js
+```
 
 
 ArrowButtons
