@@ -12,7 +12,7 @@ To get started
 ### CommonJS
 
 ```
-$ get clone ssh://git@stash.c2mpg.com:7999/c2/arrow-buttons.git
+$ npm install c2-arrow-buttons
 ```
 
 ```js
