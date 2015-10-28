@@ -21,13 +21,13 @@
                 content: ">";
             }
 
-            .previous[data-status="enabled"],
-            .next[data-status="enabled"] {
+            .previous[data-state="enabled"],
+            .next[data-state="enabled"] {
                 color: #000;
             }
 
-            .previous[data-status="disabled"],
-            .next[data-status="disabled"] {
+            .previous[data-state="disabled"],
+            .next[data-state="disabled"] {
                 color: #999;
                 cursor: default;
             }
@@ -45,6 +45,8 @@
         <div class="Example Example1" data-index="0"></div>
         <h3>Infinite</h3>
         <div class="Example Example2" data-index="0"></div>
+        <h3>Finite 2</h3>
+        <div class="Example Example3" data-index="0"></div>
 
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="lib/event-handler.js"></script>
@@ -66,6 +68,13 @@
 
             arrows2.on('update', function (index) {
                 $example2.attr('data-index', index);
+            });
+
+            var $example3 = $('.Example3');
+            var arrows3 = new ArrowButtons($example3, 5);
+
+            arrows3.on('update', function (index) {
+                $example3.attr('data-index', index);
             });
         </script>
     </body>

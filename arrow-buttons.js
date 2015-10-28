@@ -14,55 +14,51 @@ var defaults = {
     previousHTML: '<a href="#" class="previous"><span class="Hidden">Go to previous item</span></a>',
     nextHTML: '<a href="#" class="next"><span class="Hidden">Go to next item</span></a>',
     style: 'finite',
-    attribute: 'data-status',
+    attribute: 'data-state',
     enabled: 'enabled',
     disabled: 'disabled',
     initial: 0
 };
 
 // context should be an instance of Arrow
-var setPrevious = (function () {
-    var cache;
-    return function (value) {
-        if (cache === value) return;
-        this.$previous.attr(this.opts.attribute, value);
+var setPreviousState = function (value) {
+    if (this._previousState === value) return;
+    this._previousState = value;
+    this.$previous.attr(this.opts.attribute, value);
 
-        if (value === this.opts.disabled) {
-            this.$previous.attr('aria-disabled', 'true');
-        } else {
-            this.$previous.removeAttr('aria-disabled');
-        }
-    };
-}());
+    if (value === this.opts.disabled) {
+        this.$previous.attr('aria-disabled', 'true');
+    } else {
+        this.$previous.removeAttr('aria-disabled');
+    }
+};
 
 // context should be an instance of Arrow
-var setNext = (function () {
-    var cache;
-    return function (value) {
-        if (cache === value) return;
-        this.$next.attr(this.opts.attribute, value);
+var setNextState = function (value) {
+    if (this._nextState === value) return;
+    this._nextState = value;
+    this.$next.attr(this.opts.attribute, value);
 
-        if (value === this.opts.disabled) {
-            this.$next.attr('aria-disabled', 'true');
-        } else {
-            this.$next.removeAttr('aria-disabled');
-        }
-    };
-}());
+    if (value === this.opts.disabled) {
+        this.$next.attr('aria-disabled', 'true');
+    } else {
+        this.$next.removeAttr('aria-disabled');
+    }
+};
 
 // context should be an instance of Arrow
 var updateButtons = function () {
     if (this.opts.style !== 'finite') return;
     if (this.index < 1) {
-        setPrevious.call(this, this.opts.disabled);
+        setPreviousState.call(this, this.opts.disabled);
     } else {
-        setPrevious.call(this, this.opts.enabled);
+        setPreviousState.call(this, this.opts.enabled);
     }
 
     if (this.index >= this.max) {
-        setNext.call(this, this.opts.disabled);
+        setNextState.call(this, this.opts.disabled);
     } else {
-        setNext.call(this, this.opts.enabled);
+        setNextState.call(this, this.opts.enabled);
     }
 };
 
@@ -114,6 +110,9 @@ var Arrows = function (parent, max, options) {
 
     this.$previous = $(this.opts.previousHTML);
     this.$next = $(this.opts.nextHTML);
+
+    this._previousState = this.$previous.attr(this.opts.attribute);
+    this._nextState = this.$next.attr(this.opts.attribute);
 
     this.$parent.append(this.$previous, this.$next);
 
