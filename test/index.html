@@ -47,6 +47,7 @@
         <div class="Example Example2" data-index="0"></div>
 
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="lib/event-handler.js"></script>
         <script src="../standalone/arrow-buttons.js"></script>
 
         <script>
@@ -54,7 +55,7 @@
             var $example1 = $('.Example1');
             var arrows1 = new ArrowButtons($example1, 5);
 
-            arrows1.onUpdate(function (index) {
+            arrows1.on('update', function (index) {
                 $example1.attr('data-index', index);
             });
 
@@ -63,7 +64,7 @@
                 style: 'infinite'
             });
 
-            arrows2.onUpdate(function (index) {
+            arrows2.on('update', function (index) {
                 $example2.attr('data-index', index);
             });
         </script>

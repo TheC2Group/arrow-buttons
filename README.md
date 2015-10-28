@@ -75,10 +75,12 @@ Constructor
 @return {Object} - instance of ArrowButtons  
 
 
-.onUpdate
+Events
 ---------
-@param {Function}  
-@return {Object} - instance of ArrowButtons  
+* `update:previous`
+* `update:next`
+* `click:previous`
+* `click:next`
 
 
 License

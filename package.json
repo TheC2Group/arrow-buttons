@@ -4,7 +4,7 @@
   "description": "This module builds \"next\" and \"previous\" buttons and emits an update whenever the index changes.",
   "main": "arrow-buttons.js",
   "scripts": {
-    "standalone": "browserify -t [exposify --expose [ --jquery jQuery ] ] arrow-buttons.js --outfile standalone/arrow-buttons.js --standalone ArrowButtons",
+    "standalone": "browserify -t [exposify --expose [ --jquery jQuery --c2-event-handler eventHandler ] ] arrow-buttons.js --outfile standalone/arrow-buttons.js --standalone ArrowButtons",
     "dist": "uglifyjs standalone/arrow-buttons.js --output standalone/arrow-buttons.min.js --comments",
     "build": "npm run standalone && npm run dist"
   },
@@ -19,5 +19,9 @@
   "license": "MIT",
   "devDependencies": {
     "exposify": "^0.5.0"
+  },
+  "dependencies": {
+    "c2-event-handler": "^2.3.1",
+    "jquery": "^2.1.4"
   }
 }

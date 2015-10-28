@@ -8,6 +8,7 @@
 'use strict';
 
 var $ = require('jquery');
+var eventHandler = require('c2-event-handler');
 
 var defaults = {
     previousHTML: '<a href="#" class="previous"><span class="Hidden">Go to previous item</span></a>',
@@ -65,12 +66,6 @@ var updateButtons = function () {
     }
 };
 
-var emit = function (index, direction) {
-    this._listeners.forEach(function (cb) {
-        cb(index, direction);
-    });
-};
-
 // context should be an instance of Arrow
 var previousIndex = function () {
     var i = this.index - 1;
@@ -81,7 +76,7 @@ var previousIndex = function () {
 
     this.index = i;
     updateButtons.call(this);
-    emit.call(this, i, 'previous');
+    this.emit('update:previous', i);
 };
 
 // context should be an instance of Arrow
@@ -94,7 +89,7 @@ var nextIndex = function () {
 
     this.index = i;
     updateButtons.call(this);
-    emit.call(this, i, 'next');
+    this.emit('update:next', i);
 };
 
 // context should be an instance of Arrow
@@ -103,10 +98,12 @@ var bindEvents = function () {
     this.$previous.on('click', function (e) {
         e.preventDefault();
         previousIndex.call(self);
+        self.emit('click:previous');
     });
     this.$next.on('click', function (e) {
         e.preventDefault();
         nextIndex.call(self);
+        self.emit('click:next');
     });
 };
 
@@ -114,7 +111,6 @@ var Arrows = function (parent, max, options) {
     this.$parent = $(parent);
     this.max = max;
     this.opts = $.extend({}, defaults, options);
-    this._listeners = [];
 
     this.$previous = $(this.opts.previousHTML);
     this.$next = $(this.opts.nextHTML);
@@ -127,6 +123,8 @@ var Arrows = function (parent, max, options) {
 
     bindEvents.call(this);
 };
+
+eventHandler(Arrows);
 
 Arrows.prototype.setMax = function (max) {
     if (this.max === max) return;
@@ -142,10 +140,7 @@ Arrows.prototype.setIndex = function (index) {
     return this;
 };
 
-Arrows.prototype.onUpdate = function (cb) {
-    if (typeof cb !== 'function') return;
-    this._listeners.push(cb);
-    return this;
-};
+Arrows.prototype.nextIndex = nextIndex;
+Arrows.prototype.previousIndex = previousIndex;
 
 module.exports = Arrows;
