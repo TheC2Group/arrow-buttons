@@ -7,7 +7,7 @@
 
 'use strict';
 
-var $ = jQuery || require('jquery');
+var $ = require('jquery');
 
 var defaults = {
     previousHTML: '<a href="#" class="previous"><span class="Hidden">Go to previous item</span></a>',
