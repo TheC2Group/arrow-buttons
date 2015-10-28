@@ -3,7 +3,7 @@
 /*!
  * Arrow Buttons
  * https://stash.c2mpg.com:8443/projects/C2/repos/arrow-buttons
- * @version 1.2.0
+ * @version 2.0.0
  * @license MIT (c) The C2 Group (c2experience.com)
  */
 
