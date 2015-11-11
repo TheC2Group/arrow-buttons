@@ -16,7 +16,7 @@ $ npm install c2-arrow-buttons
 ```
 
 ```js
-var ArrowButtons = require('./arrow-buttons');
+var ArrowButtons = require('c2-arrow-buttons');
 ```
 
 ### Browser Global
@@ -74,6 +74,13 @@ Constructor
 -------
 @param {Number}  
 @return {Object} - instance of ArrowButtons  
+
+
+.nextIndex
+----------
+
+.previousIndex
+--------------
 
 
 Events
