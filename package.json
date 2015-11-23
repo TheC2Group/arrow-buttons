@@ -1,12 +1,15 @@
 {
   "name": "c2-arrow-buttons",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "This module builds \"next\" and \"previous\" buttons and emits an update whenever the index changes.",
-  "main": "arrow-buttons.js",
+  "jsnext:main": "arrow-buttons.js",
+  "main": "cjs/arrow-buttons.js",
+  "export": "ArrowButtons",
   "scripts": {
-    "standalone": "browserify -t [exposify --expose [ --jquery jQuery --c2-event-handler eventHandler ] ] arrow-buttons.js --outfile standalone/arrow-buttons.js --standalone ArrowButtons",
-    "dist": "uglifyjs standalone/arrow-buttons.js --output standalone/arrow-buttons.min.js --comments",
-    "build": "npm run standalone && npm run dist"
+    "iife": "rollup -c rollup-iife.config.js",
+    "cjs": "rollup -c rollup-cjs.config.js",
+    "umd": "rollup -c rollup-umd.config.js",
+    "build": "npm run iife && npm run cjs && npm run umd"
   },
   "repository": {
     "type": "git",
@@ -17,8 +20,15 @@
   ],
   "author": "The C2 Group",
   "license": "MIT",
+  "copyright": "(c) The C2 Group (c2experience.com)",
+  "bugs": {
+    "url": "https://github.com/TheC2Group/arrow-buttons/issues"
+  },
+  "homepage": "https://github.com/TheC2Group/arrow-buttons",
   "devDependencies": {
-    "exposify": "^0.5.0"
+    "babel-preset-es2015-rollup": "^1.0.0",
+    "rollup": "^0.21.0",
+    "rollup-plugin-babel": "^2.1.0"
   },
   "dependencies": {
     "c2-event-handler": "^2.3.1",

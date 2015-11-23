@@ -1,14 +1,7 @@
-/*!
- * Arrow Buttons
- * https://stash.c2mpg.com:8443/projects/C2/repos/arrow-buttons
- * @version 2.0.0
- * @license MIT (c) The C2 Group (c2experience.com)
- */
-
 'use strict';
 
-var $ = require('jquery');
-var eventHandler = require('c2-event-handler');
+import * as $ from 'jquery';
+import * as eventHandler from 'c2-event-handler';
 
 var defaults = {
     previousHTML: '<a href="#" class="previous"><span class="Hidden">Go to previous item</span></a>',
@@ -142,4 +135,4 @@ Arrows.prototype.setIndex = function (index) {
 Arrows.prototype.nextIndex = nextIndex;
 Arrows.prototype.previousIndex = previousIndex;
 
-module.exports = Arrows;
+export default Arrows;

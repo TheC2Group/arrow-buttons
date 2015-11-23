@@ -1,16 +1,7 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.ArrowButtons = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-(function (global){
-/*!
- * Arrow Buttons
- * https://stash.c2mpg.com:8443/projects/C2/repos/arrow-buttons
- * @version 2.0.0
- * @license MIT (c) The C2 Group (c2experience.com)
- */
-
 'use strict';
 
-var $ = (typeof window !== "undefined" ? window['jQuery'] : typeof global !== "undefined" ? global['jQuery'] : null);
-var eventHandler = (typeof window !== "undefined" ? window['eventHandler'] : typeof global !== "undefined" ? global['eventHandler'] : null);
+var $ = require('jquery');
+var eventHandler = require('c2-event-handler');
 
 var defaults = {
     previousHTML: '<a href="#" class="previous"><span class="Hidden">Go to previous item</span></a>',
@@ -23,7 +14,7 @@ var defaults = {
 };
 
 // context should be an instance of Arrow
-var setPreviousState = function (value) {
+var setPreviousState = function setPreviousState(value) {
     if (this._previousState === value) return;
     this._previousState = value;
     this.$previous.attr(this.opts.attribute, value);
@@ -36,7 +27,7 @@ var setPreviousState = function (value) {
 };
 
 // context should be an instance of Arrow
-var setNextState = function (value) {
+var setNextState = function setNextState(value) {
     if (this._nextState === value) return;
     this._nextState = value;
     this.$next.attr(this.opts.attribute, value);
@@ -49,7 +40,7 @@ var setNextState = function (value) {
 };
 
 // context should be an instance of Arrow
-var updateButtons = function () {
+var updateButtons = function updateButtons() {
     if (this.opts.style !== 'finite') return;
     if (this.index < 1) {
         setPreviousState.call(this, this.opts.disabled);
@@ -65,7 +56,7 @@ var updateButtons = function () {
 };
 
 // context should be an instance of Arrow
-var previousIndex = function () {
+var previousIndex = function previousIndex() {
     var i = this.index - 1;
     if (i < 0) {
         if (this.opts.style === 'finite') return;
@@ -78,7 +69,7 @@ var previousIndex = function () {
 };
 
 // context should be an instance of Arrow
-var nextIndex = function () {
+var nextIndex = function nextIndex() {
     var i = this.index + 1;
     if (i > this.max) {
         if (this.opts.style === 'finite') return;
@@ -91,7 +82,7 @@ var nextIndex = function () {
 };
 
 // context should be an instance of Arrow
-var bindEvents = function () {
+var bindEvents = function bindEvents() {
     var self = this;
     this.$previous.on('click', function (e) {
         e.preventDefault();
@@ -105,7 +96,7 @@ var bindEvents = function () {
     });
 };
 
-var Arrows = function (parent, max, options) {
+var Arrows = function Arrows(parent, max, options) {
     this.$parent = $(parent);
     this.max = max;
     this.opts = $.extend({}, defaults, options);
@@ -145,7 +136,3 @@ Arrows.prototype.nextIndex = nextIndex;
 Arrows.prototype.previousIndex = previousIndex;
 
 module.exports = Arrows;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[1])(1)
-});
