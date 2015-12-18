@@ -48,9 +48,8 @@ var options = {
 
 var arrows = new ArrowButtons('#parent', max, options);
 
-arrows.onUpdate(function (index, direction) {
+arrows.on('update', function (index) {
     console.log(index);
-    console.log(direction);
 });
 ```
 
