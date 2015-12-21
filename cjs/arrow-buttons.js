@@ -4,8 +4,8 @@ var $ = require('jquery');
 var eventHandler = require('c2-event-handler');
 
 var defaults = {
-    previousHTML: '<a href="#" class="previous"><span class="Hidden">Go to previous item</span></a>',
-    nextHTML: '<a href="#" class="next"><span class="Hidden">Go to next item</span></a>',
+    previousHTML: '<a href="#" class="previous" role="button"><span class="Hidden">Go to previous item</span></a>',
+    nextHTML: '<a href="#" class="next" role="button"><span class="Hidden">Go to next item</span></a>',
     style: 'finite',
     attribute: 'data-state',
     enabled: 'enabled',
@@ -83,16 +83,17 @@ var nextIndex = function nextIndex() {
 
 // context should be an instance of Arrow
 var bindEvents = function bindEvents() {
-    var self = this;
+    var _this = this;
+
     this.$previous.on('click', function (e) {
         e.preventDefault();
-        previousIndex.call(self);
-        self.emit('click:previous');
+        previousIndex.call(_this);
+        _this.emit('click:previous');
     });
     this.$next.on('click', function (e) {
         e.preventDefault();
-        nextIndex.call(self);
-        self.emit('click:next');
+        nextIndex.call(_this);
+        _this.emit('click:next');
     });
 };
 
