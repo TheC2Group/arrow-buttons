@@ -1,7 +1,7 @@
 'use strict';
 
-import * as $ from 'jquery';
-import * as eventHandler from 'c2-event-handler';
+import $ from 'jquery';
+import eventHandler from 'c2-event-handler';
 
 const defaults = {
     previousHTML: '<a href="#" class="previous" role="button"><span class="Hidden">Go to previous item</span></a>',
