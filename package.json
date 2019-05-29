@@ -1,6 +1,6 @@
 {
   "name": "c2-arrow-buttons",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "This module builds \"next\" and \"previous\" buttons and emits an update whenever the index changes.",
   "jsnext:main": "arrow-buttons.js",
   "main": "cjs/arrow-buttons.js",
@@ -9,7 +9,8 @@
     "iife": "rollup -c rollup-iife.config.js",
     "cjs": "rollup -c rollup-cjs.config.js",
     "umd": "rollup -c rollup-umd.config.js",
-    "build": "npm run iife && npm run cjs && npm run umd"
+    "build": "npm run iife && npm run cjs && npm run umd",
+    "bundle-example": "browserify example/js/index.js -o example/bundle/index.js"
   },
   "repository": {
     "type": "git",

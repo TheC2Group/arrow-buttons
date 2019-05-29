@@ -1,0 +1,33 @@
+body {
+    font-family: sans-serif;
+}
+
+.Hidden {
+    display: none;
+}
+
+.previous:before {
+    content: "<";
+}
+
+.next:before {
+    content: ">";
+}
+
+.previous,
+.next {
+    color: #000;
+}
+
+.previous[data-state="disabled"],
+.next[data-state="disabled"] {
+    color: #999;
+    cursor: default;
+}
+
+.Example {
+    font-size: 30px;
+}
+.Example:before {
+    content: attr(data-index);
+}
